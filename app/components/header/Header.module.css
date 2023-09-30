@@ -1,0 +1,10 @@
+.headerContainer {
+    grid-area: 1/1/2/7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    background: linear-gradient(to bottom, #767676, #ffffff);
+    opacity: 0.75;
+}

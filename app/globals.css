@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.globalGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: 100vh;
+    width: 100vw;
+
+    background-image: url(../public/assets/img/Background_movies.jpg);
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;    
+}

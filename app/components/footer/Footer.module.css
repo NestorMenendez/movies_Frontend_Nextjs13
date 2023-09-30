@@ -1,0 +1,10 @@
+.footerContainer {
+    grid-area: 12/1/13/7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    background: linear-gradient(to bottom, #ffffff, #767676);
+    opacity: 0.55;
+}
