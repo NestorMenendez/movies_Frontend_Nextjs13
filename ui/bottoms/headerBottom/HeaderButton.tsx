@@ -10,7 +10,7 @@ const HeaderButton = ({ incomingText }: Props) => {
 
   return (
 
-    <button className={styles.headerButton}>{incomingText}</button>
+    <a className={styles.headerButton}>{incomingText}</a>
 
   )
 }

@@ -8,3 +8,25 @@
     background: linear-gradient(to bottom, #767676, #ffffff);
     opacity: 0.75;
 }
+
+.authButton {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 0.2rem ;
+    -webkit-border-radius: 0.2rem ;
+    -moz-border-radius: 0.2rem ;
+    -ms-border-radius: 0.2rem ;
+    -o-border-radius: 0.2rem ;
+    cursor: pointer;
+}
+    .authButton:hover {
+        background-color: rgb(207, 207, 207);
+        transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+
+    }

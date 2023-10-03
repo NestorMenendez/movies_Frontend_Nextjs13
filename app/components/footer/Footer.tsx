@@ -8,7 +8,7 @@ const Footer = () => {
 
         <div className={styles.footerContainer}>
 
-            Footer
+            Assembler Institute of Tech 2023
 
         </div>
     )

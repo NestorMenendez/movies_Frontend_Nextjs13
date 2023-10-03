@@ -1,6 +1,6 @@
 'use client'
 
-import NotFoundTimer from './components/notFountTimer/NotFoundTimer'
+import NotFoundTimer from './components/notFoundTimer/NotFoundTimer'
 import styles from './not-found.module.css'
 import { useRouter } from "next/navigation";
 
@@ -14,10 +14,8 @@ const NotFound = () => {
                 <img className={styles.notFoundContainerImg} src="/assets/img/NotFound.jpg" alt='Not Found' />
             </div >
 
-            <NotFoundTimer to='/home' />
-
+            <NotFoundTimer to='home' />
         </>
-
 
     )
 }

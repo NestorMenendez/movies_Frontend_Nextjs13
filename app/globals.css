@@ -1,8 +1,15 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import '../global/reset.css';
+
+:root {
+    --colors-primary: #444444;
+    --colors-secondary: #ffffff;
+    --colors-aux: #4E4E3D;
+    --colors-aux2: '#877920';
+    --breakpoints-mobile: 480px;
+    --breakpoints-tablet: 768px;
+    --breakpoints-desktop: 1024px;
+    --breakpoints-max: 1280px;
+  }
 
 .globalGrid {
     display: grid;
@@ -11,7 +18,7 @@
     height: 100vh;
     width: 100vw;
 
-    background-image: url(../public/assets/img/Background_movies.jpg);
+    background-image: url(/assets/img/Background_movies.jpg);
     background-size: cover;
     object-fit: cover;
     background-repeat: no-repeat;    

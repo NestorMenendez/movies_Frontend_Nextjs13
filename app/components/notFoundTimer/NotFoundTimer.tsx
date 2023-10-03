@@ -9,13 +9,11 @@ type Props = {
 
 const NotFoundTimer = ({ to }: Props) => {
 
-
     const router = useRouter();
 
     setTimeout(() => {
         router.push(to)
     }, 3000)
-
 
     return null;
 }

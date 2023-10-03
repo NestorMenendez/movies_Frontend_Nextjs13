@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^3.1.0",
     "dotenv": "^16.3.1",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-modal": "^3.16.1"
   },
   "devDependencies": {
     "@types/node": "latest",
