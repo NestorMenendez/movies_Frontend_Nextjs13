@@ -7,6 +7,7 @@
 
     background: linear-gradient(to bottom, #767676, #ffffff);
     opacity: 0.75;
+    z-index: 10;
 }
 
 .authButton {

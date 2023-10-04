@@ -21,5 +21,6 @@
     background-image: url(/assets/img/Background_movies.jpg);
     background-size: cover;
     object-fit: cover;
-    background-repeat: no-repeat;    
+    background-repeat: no-repeat;
+    /* z-index: -10; */
 }

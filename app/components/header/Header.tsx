@@ -19,25 +19,26 @@ const Header = () => {
     }
 
     return (
+        <>
+            <div className={styles.headerContainer}>
+                <h1>MoviesDirectory</h1>
+                <section>
 
-        <div className={styles.headerContainer}>
-            <h1>MoviesDirectory</h1>
-            <section>
+                    {!user ?
+                        <a className={styles.authButton} href="/api/auth/login">Login</a>
+                        :
+                        <>
+                            <a className={styles.authButton} onClick={handleOpenModal} >Add movie</a>
+                            <a className={styles.authButton} href="/api/auth/logout">Logout</a>
+                        </>
+                    }
 
-                {!user ?
-                    <a className={styles.authButton} href="/api/auth/login">Login</a>
-                    :
-                    <>
-                        <a className={styles.authButton} onClick={handleOpenModal} >Add movie</a>
-                        <a className={styles.authButton} href="/api/auth/logout">Logout</a>
-                    </>
+                </section>
+                {isModalAddOpen &&
+                    <ModalAddMovie isOpen={isModalAddOpen} handleCloseModal={handleCloseModal} />
                 }
-
-            </section>
-            {isModalAddOpen &&
-                <ModalAddMovie isOpen={isModalAddOpen} handleCloseModal={handleCloseModal} ></ModalAddMovie>
-            }
-        </div>
+            </div>
+        </>
     )
 }
 

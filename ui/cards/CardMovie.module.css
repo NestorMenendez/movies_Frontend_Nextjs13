@@ -5,7 +5,7 @@
     background-color: var(--colors-secondary);
     opacity: 0.9;
     border-radius: 0.5rem;
-
+    z-index: 1;
 }
 .cardContainer__body {
     display: flex;
@@ -13,8 +13,12 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 0.5rem;
-    
+ 
 }
+.cardContainer__body__overflow {
+    text-overflow: ellipsis;
+}
+
 .imgContainer {
     padding-top: 0.5rem;
     padding-left:0.5rem;

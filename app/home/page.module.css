@@ -11,3 +11,21 @@
     padding: 1rem;
     gap: 1rem;
 }
+.moviesContainer::-webkit-scrollbar {
+    width: 16px;
+    opacity: 0.5;
+  }
+  
+.moviesContainer::-webkit-scrollbar-thumb {
+    background-color:rgba(88, 88, 88, 0.5);
+    border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+
+}
+
+.moviesContainer::-webkit-scrollbar-thumb:hover {
+    background-color:rgba(88, 88, 88, 0.75);
+}
