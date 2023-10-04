@@ -4,6 +4,7 @@ import styles from './ModalEditMovie.module.css'
 // import { useUser } from '@auth0/nextjs-auth0/client'
 import { createMovie, deleteMovie, updateMovie } from '@/services/movies.services';
 import { getAllGenres } from '@/services/genres.services';
+import { CardMovie } from '../CardMovie';
 // import { createMovie } from '../../api/movies.fetch';
 // import { useContext, useState } from 'react';
 // import { GenresContext } from '../../context/genres.context';
@@ -175,32 +176,35 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
         <div className={`${styles.modal} ${isOpen ? `${styles.open}` : ''}`}>
             <div className={styles.modalContent}>
                 <h2>Edit Movie</h2>
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Title:
-                        <input type="text" name="title" value={formData.title} onChange={handleChange} required />
-                    </label>
-                    <label>
-                        Genre:
-                        <select name="genres" onChange={handleChange} required>
-                            <option value="">Select genre</option>
-                            {/* TOFIX falta por traer los genresAll en un context o redux */}
-                        </select>
-                    </label>
-                    <label>
-                        Score:
-                        <input type="number" name="score" value={formData.score} onChange={handleChange} required />
-                    </label>
-                    <label>
-                        Image:
-                        <input type="file" accept="image/*" name="imageList" onChange={handleChange} required />
-                    </label>
-                    <div className={styles.buttonsSection}>
-                        <button type="submit">Modifie</button>
-                        <button type="button" onClick={handleDelete}>Delete</button>
-                        <button type="button" onClick={handleCloseModal}>Close</button>
-                    </div>
-                </form>
+                <section className={styles.modalToRow}>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            Title:
+                            <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+                        </label>
+                        <label>
+                            Genre:
+                            <select name="genres" onChange={handleChange} required>
+                                <option value="">Select genre</option>
+                                {/* TOFIX falta por traer los genresAll en un context o redux */}
+                            </select>
+                        </label>
+                        <label>
+                            Score:
+                            <input type="number" name="score" value={formData.score} onChange={handleChange} required />
+                        </label>
+                        <label>
+                            Image:
+                            <input type="file" accept="image/*" name="imageList" onChange={handleChange} required />
+                        </label>
+                        <div className={styles.buttonsSection}>
+                            <button type="submit">Modifie</button>
+                            <button type="button" onClick={handleDelete}>Delete</button>
+                            <button type="button" onClick={handleCloseModal}>Close</button>
+                        </div>
+                    </form>
+                    <CardMovie key={id} id={id} title={title} score={score} genres={genres} image={image} />
+                </section>
             </div>
         </div>
     );

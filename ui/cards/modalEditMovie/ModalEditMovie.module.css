@@ -18,7 +18,9 @@
   .modal.open {
     display: flex;
   }
-  
+  .modalToRow {
+    display: flex;
+  }
   .modalContent {
     background: white;
     padding: 20px;

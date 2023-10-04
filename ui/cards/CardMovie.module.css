@@ -2,10 +2,19 @@
 .cardTotal {
     display: flex ;
     flex-direction: column;
+    justify-content: center;
     background-color: var(--colors-secondary);
     opacity: 0.9;
     border-radius: 0.5rem;
     z-index: 1;
+}
+.cardTotal:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
 }
 .cardContainer__body {
     display: flex;
@@ -20,6 +29,8 @@
 }
 
 .imgContainer {
+    display: flex;
+    justify-content: center;
     padding-top: 0.5rem;
     padding-left:0.5rem;
     padding-right:0.5rem;
@@ -31,10 +42,10 @@
     object-fit: cover;  
 }
 
-@media (max-width: var) {
+@media (width <= 480px) {
 
     .cardTotal {
-        width: 85%;
+        width: 180px;
     }
 
     .imgContainer {
@@ -44,10 +55,10 @@
 }
 
 
-@media (min-width: var(--breakpoints-mobile)) and (max-width: var(--breakpoints-tablet)) {
+@media ( 480px < width <= 720px) {
 
     .cardTotal {
-        width: 28%;
+        width: 200px;
     }
 
     .imgContainer {
@@ -57,10 +68,10 @@
 }
 
 
-@media (min-width: var(--breakpoints-tablet)) and (max-width: var(--breakpoints-desktop)) {
+@media ( 720px < width <= 1024px) {
 
     .cardTotal {
-        width: 18%;
+        width: 220px;
     }
 
     .imgContainer {
@@ -70,10 +81,10 @@
 }
 
 
-@media (min-width: var(--breakpoints-desktop)) {
+@media ( width < 1024) {
 
     .cardTotal {
-        width: 12%;
+        width: 250px;
     }
 
     .imgContainer {
