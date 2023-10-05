@@ -8,7 +8,6 @@ const Home = async () => {
 
     const arrayMovies = await getAllMovies();
 
-
     return (
 
         <section className={styles.moviesContainer}>

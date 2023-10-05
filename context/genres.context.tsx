@@ -21,12 +21,10 @@ export const GenresProvider: FC<Props> = ({ children }) => {
         async function getAllGenresLauncher() {
             const arrayGenres = await getAllGenres();
             setGenres(arrayGenres);
-            console.log(genresAll)
         }
         getAllGenresLauncher();
     }, [])
 
-    console.log(genresAll)
     return (
         <>
             <GenresContext.Provider value={{ genresAll }}>

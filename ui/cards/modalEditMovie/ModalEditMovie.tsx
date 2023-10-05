@@ -1,10 +1,13 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './ModalEditMovie.module.css'
 // import { useUser } from '@auth0/nextjs-auth0/client'
 import { createMovie, deleteMovie, updateMovie } from '@/services/movies.services';
 import { getAllGenres } from '@/services/genres.services';
 import { CardMovie } from '../CardMovie';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import { GenresContext } from '@/context/genres.context';
+import { useRouter } from 'next/navigation';
 // import { createMovie } from '../../api/movies.fetch';
 // import { useContext, useState } from 'react';
 // import { GenresContext } from '../../context/genres.context';
@@ -42,9 +45,11 @@ type MovieProps = {
 
 
 export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseModal, selectedMovie }) => {
-    console.log(selectedMovie)
-    // const user = useUser();
-    const userEmail = "menendezechevarria@gmail.com";
+
+    const user = useUser();
+    const router = useRouter();
+    const userEmail = user.user?.email;
+    const { genresAll } = useContext(GenresContext);
     const [formData, setFormData] = useState<MovieData>({
         id: '',
         title: '',
@@ -86,7 +91,7 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
 
     // const { genresAll } = useContext(GenresContext);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value, type } = e.target;
         if (type === 'file') {
             const files = (e.target as HTMLInputElement).files;
@@ -108,7 +113,8 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
                 formDataToSend.imageList = null;
             }
             formDataToSend.id = id;
-            const updatedMovie = updateMovie(formDataToSend, userEmail);
+            updateMovie(formDataToSend, userEmail);
+            router.refresh();
             // const updatedArrayMovies = arrayMovies.filter((movie) => movie.id !== formDataToSend.id);
             // handleArrayMoviesUser(updatedArrayMovies);
             // handleArrayMovies(updatedArrayMovies);
@@ -128,13 +134,12 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
     };
 
     const handleDelete = () => {
-
         try {
             deleteMovie(formData, userEmail);
+            router.refresh();
             // handleDeleteMovieUser(formData.id)
             // const newArrayMovies = await getAllMovies();
             // handleArrayMovies(newArrayMovies);
-
             setFormData({
                 id: '',
                 title: '',
@@ -184,13 +189,19 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
                             Genre:
                             <select name="genres" onChange={handleChange} required>
                                 <option value="">Select genre</option>
-                                {/* TOFIX falta por traer los genresAll en un context o redux */}
+                                {genresAll.map((genre) => (
+                                    <option key={genre.id} value={genre.id}>
+                                        {genre.name}
+                                    </option>
+                                ))}
                             </select>
                         </label>
-                        <label>
-                            Description:
-                            <input type="text" name="description" value={formData.description} onChange={handleChange} required />
-                        </label>
+                        <div className={styles.textAreaContainer}>
+                            <label>
+                                Description:
+                                <textarea name="description" value={formData.description} onChange={handleChange} required />
+                            </label>
+                        </div>
                         <label>
                             Score:
                             <input type="number" name="score" value={formData.score} onChange={handleChange} required />

@@ -14,18 +14,16 @@ export const getAllMovies = async () => {
 };
 
 export const getAllMoviesByUser = async (userEmail: string) => {
-    console.log(userEmail)
 
-    const token = await getAccessToken();
+    // const token = await getAccessToken();
 
     try {
         const response = await fetch(`${URL_MOVIES}/byUser/${userEmail}`, {
-            headers: {
-                authorization: `Bearer ${token.accessToken}`
-            }
+            // headers: {
+            //     authorization: `Bearer ${token.accessToken}`
+            // }
         });
         const movies = await response.json();
-        console.log('retorno del fetch' + movies)
         return movies;
     }
     catch {
@@ -37,7 +35,6 @@ export const getMovieId = async (id: string) => {
 
     // const token = await getAccessToken();
 
-    console.log(URL_MOVIES)
     try {
         const response = await fetch(`${URL_MOVIES}/${id}`, {
             // headers: {
@@ -45,7 +42,6 @@ export const getMovieId = async (id: string) => {
             // }
         });
         const movie = await response.json();
-        console.log('retorno del fetch' + movie)
         return movie;
     }
     catch {
@@ -54,21 +50,22 @@ export const getMovieId = async (id: string) => {
 };
 
 export const updateMovie = async (data: any, user: any) => {
-    const token = await getAccessToken();
-    const { id, title, score, genres } = data
+    // const token = await getAccessToken();
+    const { id, title, score, genres, description } = data
 
     const formData = new FormData()
     formData.append('title', title);
     formData.append('score', score);
     formData.append('genres', genres);
+    formData.append('description', description);
 
     try {
         const response = await fetch(`${URL_MOVIES}/${id}`,
             {
                 method: "PATCH",
-                headers: {
-                    authorization: `Bearer ${token.accessToken}`,
-                },
+                // headers: {
+                //     authorization: `Bearer ${token.accessToken}`,
+                // },
                 body: formData
             })
         if (!response.ok) {
@@ -82,23 +79,23 @@ export const updateMovie = async (data: any, user: any) => {
 }
 
 export const createMovie = async (data: any, userEmail: string) => {
-    const token = await getAccessToken();
-    const { title, score, genres, imageList } = data
+    // const token = await getAccessToken();
+    const { title, score, genres, imageList, description } = data
     const image = imageList[0];
-
     const formData = new FormData()
     formData.append('title', title);
     formData.append('score', score);
     formData.append('genres', genres);
     formData.append('image', image);
+    formData.append('description', description);
 
     try {
         const response = await fetch(`${URL_MOVIES}/${userEmail}`,
             {
                 method: "POST",
-                headers: {
-                    authorization: `Bearer ${token.accessToken}`,
-                },
+                // headers: {
+                //     authorization: `Bearer ${token.accessToken}`,
+                // },
                 body: formData
             })
         if (!response.ok) {
@@ -112,17 +109,17 @@ export const createMovie = async (data: any, userEmail: string) => {
 }
 
 export const deleteMovie = async (data: any, user: any) => {
-    console.log('entring')
-    const token = await getAccessToken();
-    console.log(token)
+
+    // const token = await getAccessToken();
+
     const { id } = data;
 
     try {
         const response = await fetch(`${URL_MOVIES}/${id}`, {
             method: "DELETE",
-            headers: {
-                Authorization: `Bearer ${token.accessToken}`,
-            },
+            // headers: {
+            //     Authorization: `Bearer ${token.accessToken}`,
+            // },
         });
 
         if (!response.ok) {

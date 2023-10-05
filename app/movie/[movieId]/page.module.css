@@ -3,11 +3,17 @@
     display: flex;
     flex-direction: column;
 
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
     padding: 1rem;
     gap: 1rem;
+}
+.movieContainer__img {
+    height: 50%;
+}
+.movieContainer__img__img {
+    height: 100%;
 }
 .movieContainer__body {
     display: flex;
@@ -15,4 +21,16 @@
     justify-content: center;
     align-items: center;
     color: #ffffff;
+}
+.description {
+    font-style: italic;
+}
+.backButtonPosition {
+    position: absolute;
+    bottom: 10%;
+    right: 2%;
+    color: #ffffff;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
 }

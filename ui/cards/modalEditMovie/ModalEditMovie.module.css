@@ -14,7 +14,6 @@
     z-index: 10;
 
   }
-  
   .modal.open {
     display: flex;
   }
@@ -39,7 +38,6 @@
     display: block;
     margin-bottom: 10px;
   }
-  
   .modalContent input,
   .modalContent select {
     width: 100%;
@@ -49,11 +47,22 @@
     border-radius: 4px;
   }
   
+  .textAreaContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .textAreaContainer textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
   .modalContent .buttonsSection {
     display: flex;
     justify-content: space-between;
   }
-  
   .modalContent button {
     padding: 10px 20px;
     border: none;
@@ -63,7 +72,6 @@
   .modalContent button:hover {
     background-color: rgb(125, 125, 125);
   }
-  
   .modalContent .closeButton {
     position: absolute;
     top: 10px;

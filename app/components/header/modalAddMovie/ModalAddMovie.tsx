@@ -1,9 +1,11 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './ModalAddMovie.module.css'
 import { useUser } from '@auth0/nextjs-auth0/client'
 import { createMovie } from '@/services/movies.services';
 import { getAllGenres } from '@/services/genres.services';
+import { GenresContext } from '@/context/genres.context';
+import { useRouter } from 'next/navigation';
 // import { createMovie } from '../../api/movies.fetch';
 // import { useContext, useState } from 'react';
 // import { GenresContext } from '../../context/genres.context';
@@ -26,6 +28,7 @@ interface MovieData {
 
 export const ModalAddMovie: React.FC<AddMovieProps> = ({ isOpen, handleCloseModal }) => {
 
+
     const user = useUser();
     const userEmail = user.user?.email;
     const [formData, setFormData] = useState<MovieData>({
@@ -35,13 +38,14 @@ export const ModalAddMovie: React.FC<AddMovieProps> = ({ isOpen, handleCloseModa
         score: 0,
         imageList: null,
     });
-    // const genresAll = await getAllGenres();
+    const { genresAll } = useContext(GenresContext);
+    const router = useRouter();
     // const { user, getAccessTokenSilently } = useAuth0();
     // const { genresAll } = useContext(GenresContext);
     // const { arrayMoviesUser, handleArrayMoviesUser } = useContext(MoviesUserContext);
     // const { arrayMovies, handleArrayMovies } = useContext(MoviesPublicContext);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value, type } = e.target;
         if (type === 'file') {
             const files = (e.target as HTMLInputElement).files;
@@ -58,11 +62,8 @@ export const ModalAddMovie: React.FC<AddMovieProps> = ({ isOpen, handleCloseModa
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-
-            const newMovie = await createMovie(formData, userEmail);
-            // const updatedArrayMoviesUser = [...arrayMoviesUser, newMovie]
-            // handleArrayMoviesUser(updatedArrayMoviesUser)
-            // handleArrayMovies(updatedArrayMoviesUser)
+            await createMovie(formData, userEmail || "");
+            router.refresh();
             setFormData({
                 title: '',
                 genres: [],
@@ -119,13 +120,19 @@ export const ModalAddMovie: React.FC<AddMovieProps> = ({ isOpen, handleCloseModa
                         Genre:
                         <select name="genres" onChange={handleChange} required>
                             <option value="">Select genre</option>
-                            {/* TOFIX falta por traer los genresAll en un context o redux */}
+                            {genresAll.map((genre) => (
+                                <option key={genre.id} value={genre.id}>
+                                    {genre.name}
+                                </option>
+                            ))}
                         </select>
                     </label>
-                    <label>
-                        Description:
-                        <input type="text" name="description" value={formData.description} onChange={handleChange} required />
-                    </label>
+                    <div className={styles.textAreaContainer}>
+                        <label>
+                            Description:
+                            <textarea name="description" value={formData.description} onChange={handleChange} required />
+                        </label>
+                    </div>
                     <label>
                         Score:
                         <input type="number" name="score" value={formData.score} onChange={handleChange} required />

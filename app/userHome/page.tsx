@@ -26,7 +26,6 @@ const userHome = async () => {
 
     const session = await getSession();
     const userEmail = session?.user.email
-    console.log('aqui el mail de usuario' + userEmail)
     const arrayMovies = await getAllMoviesByUser(userEmail || "");
 
     return (
