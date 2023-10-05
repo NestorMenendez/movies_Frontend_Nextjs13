@@ -13,7 +13,6 @@ export const getAllMovies = async () => {
     }
 };
 
-
 export const getAllMoviesByUser = async (userEmail: string) => {
     console.log(userEmail)
 
@@ -28,6 +27,26 @@ export const getAllMoviesByUser = async (userEmail: string) => {
         const movies = await response.json();
         console.log('retorno del fetch' + movies)
         return movies;
+    }
+    catch {
+        throw new Error("Error while getting movies from mongoDB user profile");
+    }
+};
+
+export const getMovieId = async (id: string) => {
+
+    // const token = await getAccessToken();
+
+    console.log(URL_MOVIES)
+    try {
+        const response = await fetch(`${URL_MOVIES}/${id}`, {
+            // headers: {
+            //     authorization: `Bearer ${token.accessToken}`
+            // }
+        });
+        const movie = await response.json();
+        console.log('retorno del fetch' + movie)
+        return movie;
     }
     catch {
         throw new Error("Error while getting movies from mongoDB user profile");

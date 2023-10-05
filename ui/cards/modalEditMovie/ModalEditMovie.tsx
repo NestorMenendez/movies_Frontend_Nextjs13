@@ -21,6 +21,7 @@ interface MovieData {
     id: string,
     title: string;
     genres: string[];
+    description: string;
     score: number;
     imageList: FileList | null;
 }
@@ -35,18 +36,20 @@ type MovieProps = {
     image: {
         public_id: string,
         secure_url: string
-    }
+    },
+    description: string
 }
 
 
 export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseModal, selectedMovie }) => {
-
+    console.log(selectedMovie)
     // const user = useUser();
     const userEmail = "menendezechevarria@gmail.com";
     const [formData, setFormData] = useState<MovieData>({
         id: '',
         title: '',
         genres: [],
+        description: '',
         score: 0,
         imageList: null,
     });
@@ -58,6 +61,7 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
                 id: selectedMovie.id,
                 title: selectedMovie.title,
                 genres: [firstGenre],
+                description: selectedMovie.description,
                 score: selectedMovie.score,
                 imageList: null,
             });
@@ -67,12 +71,14 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
     let id = '';
     let title = '';
     let score = 0;
+    let description = '';
     let genres: string = '';
     let image = { public_id: '', secure_url: '' };
     if (selectedMovie) {
         id = selectedMovie.id;
         title = selectedMovie.title;
         score = selectedMovie.score;
+        description = selectedMovie.description;
         genres = selectedMovie.genres.name;
         image = selectedMovie.image;
     }
@@ -111,6 +117,7 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
                 id: '',
                 title: '',
                 genres: [],
+                description: '',
                 score: 0,
                 imageList: null,
             });
@@ -132,6 +139,7 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
                 id: '',
                 title: '',
                 genres: [],
+                description: '',
                 score: 0,
                 imageList: null,
             });
@@ -140,16 +148,6 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
             console.error(error);
         }
     }
-
-    const handleReset = () => {
-        setFormData({
-            id: '',
-            title: '',
-            genres: [],
-            score: 0,
-            imageList: null,
-        });
-    };
 
     useEffect(() => {
         const handleClickOutsideModal = (event: MouseEvent) => {
@@ -188,6 +186,10 @@ export const ModalEditMovie: React.FC<EditMovieProps> = ({ isOpen, handleCloseMo
                                 <option value="">Select genre</option>
                                 {/* TOFIX falta por traer los genresAll en un context o redux */}
                             </select>
+                        </label>
+                        <label>
+                            Description:
+                            <input type="text" name="description" value={formData.description} onChange={handleChange} required />
                         </label>
                         <label>
                             Score:

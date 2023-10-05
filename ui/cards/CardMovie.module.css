@@ -1,5 +1,6 @@
 
 .cardTotal {
+    position: relative;
     display: flex ;
     flex-direction: column;
     justify-content: center;
@@ -41,6 +42,23 @@
     max-height: 100%;
     object-fit: cover;  
 }
+.editButton {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+        -webkit-border-radius: 0.5rem;
+        -moz-border-radius: 0.5rem;
+        -ms-border-radius: 0.5rem;
+        -o-border-radius: 0.5rem;
+    opacity: 0.8;
+}
+.editButton:hover {
+    cursor: grabbing;
+}
+
 
 @media (width <= 480px) {
 

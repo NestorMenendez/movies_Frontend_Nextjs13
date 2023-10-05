@@ -34,7 +34,7 @@ const userHome = async () => {
         <>
             <section className={styles.moviesContainer}>
                 {arrayMovies?.map(({ id, title, score, genres, image }) => (
-                    <CardMovie key={id} id={id} title={title} score={score} genres={genres} image={image} />
+                    <CardMovie key={id} id={id} title={title} score={score} genres={genres} image={image} user={"yes"} />
                 ))}
             </section>
         </>

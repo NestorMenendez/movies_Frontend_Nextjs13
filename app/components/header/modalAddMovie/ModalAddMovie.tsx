@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
 import styles from './ModalAddMovie.module.css'
-// import { useUser } from '@auth0/nextjs-auth0/client'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import { createMovie } from '@/services/movies.services';
 import { getAllGenres } from '@/services/genres.services';
 // import { createMovie } from '../../api/movies.fetch';
@@ -18,6 +18,7 @@ interface AddMovieProps {
 interface MovieData {
     title: string;
     genres: string[];
+    description: string;
     score: number;
     imageList: FileList | null;
 }
@@ -25,11 +26,12 @@ interface MovieData {
 
 export const ModalAddMovie: React.FC<AddMovieProps> = ({ isOpen, handleCloseModal }) => {
 
-    // const user = useUser();
-    const userEmail = "menendezechevarria@gmail.com";
+    const user = useUser();
+    const userEmail = user.user?.email;
     const [formData, setFormData] = useState<MovieData>({
         title: '',
         genres: [],
+        description: '',
         score: 0,
         imageList: null,
     });
@@ -64,6 +66,7 @@ export const ModalAddMovie: React.FC<AddMovieProps> = ({ isOpen, handleCloseModa
             setFormData({
                 title: '',
                 genres: [],
+                description: '',
                 score: 0,
                 imageList: null,
             });
@@ -118,6 +121,10 @@ export const ModalAddMovie: React.FC<AddMovieProps> = ({ isOpen, handleCloseModa
                             <option value="">Select genre</option>
                             {/* TOFIX falta por traer los genresAll en un context o redux */}
                         </select>
+                    </label>
+                    <label>
+                        Description:
+                        <input type="text" name="description" value={formData.description} onChange={handleChange} required />
                     </label>
                     <label>
                         Score:
