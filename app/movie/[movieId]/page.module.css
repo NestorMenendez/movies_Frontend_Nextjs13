@@ -24,6 +24,8 @@
 }
 .description {
     font-style: italic;
+    padding: 0 3rem;
+    padding-bottom: 3;
 }
 .backButtonPosition {
     position: absolute;
