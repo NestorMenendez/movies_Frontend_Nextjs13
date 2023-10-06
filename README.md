@@ -27,11 +27,11 @@ Our app allows users to save their favorite movies and customize their entries w
 
 ## Previews
 
-![Mobile version](https://https://github.com/NestorMenendez/movies_Frontend_Nextjs13/blob/main/public/assets/img/mobileVs.png)
+![Mobile version](/public/assets/img/mobileVs.png)
 
-![Tablet version](https://https://github.com/NestorMenendez/movies_Frontend_Nextjs13/blob/main/public/assets/img/tabletVs.png)
+![Tablet version](/public/assets/img/tabletVs.png)
 
-![Desktop version](https://https://github.com/NestorMenendez/movies_Frontend_Nextjs13/blob/main/public/assets/img/desktopVs.png)
+![Desktop version](/public/assets/img/desktopVs.png)
 
 
 ## Stack - Libraries & Dependencies
