@@ -23,9 +23,22 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 Our app allows users to save their favorite movies and customize their entries with titles, genres, scores, and descriptions. With our user-friendly interface, you can easily create new movie entries, edit existing ones, and access detailed information about each film. Keep track of your cinematic preferences and discover new favorites with our movie management app!
 
+## Previews
 
+![Mobile version](https://github.com/NestorMenendez/movies_Frontend_Nextjs13/public/assets/img/mobileVs.png)
 
+![Tablet version](https://github.com/NestorMenendez/movies_Frontend_Nextjs13/public/assets/img/tabletVs.png)
 
+![Desktop version](https://github.com/NestorMenendez/movies_Frontend_Nextjs13/public/assets/img/desktopVs.png)
+
+## Stack - Libraries & Dependencies
+
+TypeScript: statically typed superset of JavaScript that enhances code quality and developer productivity by catching type-related errors during development.
+React: popular JavaScript library for building user interfaces. It allows you to create interactive and reusable UI components.
+React DOM: specific package for rendering React components into the DOM (Document Object Model) of a web page.
+React Icons: library that provides a set of popular icon libraries as React components, making it easy to include icons in your React applications.
+Next.js: framework built on top of React that simplifies the creation of server-rendered React applications. It offers features like routing, server-side rendering, and static site generation.
+dotenv: zero-dependency module that loads environment variables from a .env file into your Node.js application, making it easy to manage configuration settings
 
 ## Learn More
 
