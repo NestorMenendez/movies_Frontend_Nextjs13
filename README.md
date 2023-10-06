@@ -27,13 +27,10 @@ Our app allows users to save their favorite movies and customize their entries w
 
 ## Previews
 
-Mobile version
 ![Mobile version](/public/assets/img/mobileVs.png)
 
-Tablet version
 ![Tablet version](/public/assets/img/tabletVs.png)
 
-Desktop version
 ![Desktop version](/public/assets/img/desktopVs.png)
 
 
